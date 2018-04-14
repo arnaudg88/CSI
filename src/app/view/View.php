@@ -9,14 +9,11 @@ class View
         switch ($methode) {
             case 0 :
                 ?>
-                <!DOCTYPE HTML>
-                <html lang="fr">
-                <head>
-                    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-                    <title>Accueil</title>
-                </head>
+                  <?php include('elements/header.php');?>
                 <body>
                     <h1>Bonjour</h1>
+                    <?php include('elements/footer.php');?>
+                    <h1>Voici le second titre</h1>
                 <?php
                 break;
         }
