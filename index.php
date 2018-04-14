@@ -2,6 +2,7 @@
 require_once "vendor/autoload.php";
 
 use app\controller\Controller;
+use app\model\Utilisateur;
 
 $app = new \Slim\App();
 
@@ -12,15 +13,6 @@ $app = new \Slim\App();
 $app->get('/', function($req, $res, $args)  {
     $c = new Controller();
     $c->afficheAccueil();
-
-    /*$sql = "SELECT id_utilisateur FROM utilisateurs";
-    $stmt = $spdo->query($sql);
-    $stmt->execute();
-    ?> <h1>attention</h1> <?php
-    while($t = $stmt->fetch()) {
-        ?> <h2>salut</h2> <?php
-    }*/
-
 })->setName('home'); /*un nom si on veut récupéré l'url pour un boutton par exemple avec la fonction pathFrom($nom) */
 
 $app->run();

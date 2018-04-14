@@ -1,11 +1,15 @@
 <?php
 
+namespace app\model;
+
+use \PDO;
+
 class SPDO
 {
     /**
      * Instance de la classe PDO
      *
-     * @var PDO
+     * @var \PDO
      * @access private
      */
     private $PDOInstance = null;
@@ -58,9 +62,9 @@ class SPDO
     private function __construct()
     {
         try{
-            $this->PDOInstance = new PDO('pgsql:dbname='.self::DEFAULT_SQL_DTB.';host='.self::DEFAULT_SQL_HOST,self::DEFAULT_SQL_USER ,self::DEFAULT_SQL_PASS, array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
+            $this->PDOInstance = new \PDO('pgsql:dbname='.self::DEFAULT_SQL_DTB.';host='.self::DEFAULT_SQL_HOST,self::DEFAULT_SQL_USER ,self::DEFAULT_SQL_PASS, array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
         }
-        catch (PDOException $e) {
+        catch (\PDOException $e) {
             print "Erreur !: " . $e->getMessage() . "<br/>";
             die();
         }
@@ -87,7 +91,7 @@ class SPDO
      * Exécute une requête SQL avec PDO
      *
      * @param string $query La requête SQL
-     * @return PDOStatement Retourne l'objet PDOStatement
+     * @return \PDOStatement Retourne l'objet PDOStatement
      */
     public function query($query)
     {
