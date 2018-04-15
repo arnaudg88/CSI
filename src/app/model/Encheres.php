@@ -7,4 +7,7 @@ require 'SPDO.php';
 class Encheres
 {
 
+    function getListeEncheres() {
+
+    }
 }

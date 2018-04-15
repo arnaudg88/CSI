@@ -4,6 +4,8 @@ require_once "vendor/autoload.php";
 use app\controller\Controller;
 use app\controller\ControllerEnchere;
 
+session_start();
+
 $app = new \Slim\App();
 
 /* permet de faire des actions en fonciton de l'url
