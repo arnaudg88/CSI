@@ -10,6 +10,7 @@
     <link rel="icon" href="images/favicon.ico">
     <link rel="shortcut icon" href="images/favicon.ico" />
     <link rel="stylesheet" href="css/owl.carousel.css">
+    <link rel="stylesheet" href="css/contact-form.css">
     <link rel="stylesheet" href="css/camera.css">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/jquery.js"></script>
@@ -90,9 +91,24 @@ header
                 <div class="navigation">
                     <nav>
                         <ul class="sf-menu">
-                            <li class="current"><a href="">Accueil</a></li>
-                            <li><a href="mission.html">Les enchères</a></li>
-                            <li><a href="contacts.html">A propos</a></li>
+                            <?php
+                            //$r = $_SESSION['lien'];
+
+                            echo '<li class=""><a href="">Accueil</a></li>
+                            <li><a href="">Les enchères</a></li>
+                            <li><a href="">A propos</a></li>';
+
+                            /*echo '<li class="'.$r->pathFor('accueil').'"><a href="">Accueil</a></li>
+                            <li><a href="'.$r->pathFor('encheres').'">Les enchères</a></li>
+                            <li><a href="'.$r->pathFor('accueil').'">A propos</a></li>';*/
+
+                            /*if(isset($_SESSION['util'])) {
+
+                            } else {
+                                echo '<li><a href="'.$r->pathFor('inscription').'">Inscription</a></li>
+                                <li><a href="'.$r->pathFor('connexion').'">Connexion</a></li>';
+                            }*/
+                            ?>
                         </ul>
                     </nav>
                     <div class="clear"></div>
