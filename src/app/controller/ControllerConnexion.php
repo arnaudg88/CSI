@@ -27,17 +27,26 @@ class ControllerConnexion
     }
 
     function inscription() {
-        $u = new Utilisateur(null, $_POST['nom'], $_POST['prenom'], $_POST['dateN'], $_POST['tel'], $_POST['adresse'], $_POST['ville'], $_POST['pays'], $_POST['pseudo'], $_POST['mdp'], 0.00, 0.00);
-        return $u->inscription();
+        if($_POST['mdp'] == $_POST['mdpconfirm']) {
+            $u = new Utilisateur(null, $_POST['nom'], $_POST['prenom'], $_POST['dateN'], $_POST['tel'], $_POST['adresse'], $_POST['ville'], $_POST['pays'], $_POST['pseudo'], $_POST['mdp'], 0.00, 0.00);
+            return $u->inscription();
+        } else {
+            return false;
+        }
     }
 
     function connexion() {
         $u = Utilisateur::getUtilisateur($_POST['pseudo']);
-        if(password_verify($u->mdp, $_POST['mdp'])) {
+        if(password_verify($_POST['mdp'], $u->mdp)) {
             $_SESSION['util'] = $u;
             return true;
         }else {
+            var_dump($u);
             return false;
         }
+    }
+
+    function deconnexion() {
+        unset($_SESSION['util']);
     }
 }

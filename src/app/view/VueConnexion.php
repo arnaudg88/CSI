@@ -29,7 +29,11 @@ class VueConnexion
                                     <span class="empty-message">*This field is required.</span>
                                     <span class="error-message">*This is not a valid password.</span>
                                 </label>
-
+                                <label class="mdp">
+                                    <input type="password" name="mdpconfirm" placeholder="Confirmer mot de passe:" value="" data-constraints="@Required" />
+                                    <span class="empty-message">*This field is required.</span>
+                                    <span class="error-message">*This is not a valid password.</span>
+                                </label>
                                 <br>
                                 <label class="name">
                                     <input type="text" name="nom" placeholder="Nom:" value="" data-constraints="@Required @JustLetters"  />

@@ -3,7 +3,7 @@
   "type" : "project",
   "require": {
     "php": ">=5.6.0",
-    "slim/slim": "3.*"
+    "slim/slim": "2.*"
   },
   "autoload": {
     "psr-0": {

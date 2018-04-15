@@ -92,22 +92,19 @@ header
                     <nav>
                         <ul class="sf-menu">
                             <?php
-                            //$r = $_SESSION['lien'];
+                            $r = \Slim\Slim::getInstance();
 
-                            echo '<li class=""><a href="">Accueil</a></li>
-                            <li><a href="">Les enchères</a></li>
-                            <li><a href="">A propos</a></li>';
+                            echo '<li class="'.$r->urlFor('home').'"><a href="">Accueil</a></li>
+                            <li><a href="'.$r->urlFor('encheres').'">Les enchères</a></li>
+                            <li><a href="'.$r->urlFor('home').'">A propos</a></li>';
 
-                            /*echo '<li class="'.$r->pathFor('accueil').'"><a href="">Accueil</a></li>
-                            <li><a href="'.$r->pathFor('encheres').'">Les enchères</a></li>
-                            <li><a href="'.$r->pathFor('accueil').'">A propos</a></li>';*/
-
-                            /*if(isset($_SESSION['util'])) {
-
+                            if(isset($_SESSION['util'])) {
+                                echo '<li>Bonjour '.$_SESSION['util']->pseudo.'</li>
+                                <li><a href="'.$r->urlFor('deconnexion').'">Déconnexion</a></li>';
                             } else {
-                                echo '<li><a href="'.$r->pathFor('inscription').'">Inscription</a></li>
-                                <li><a href="'.$r->pathFor('connexion').'">Connexion</a></li>';
-                            }*/
+                                echo '<li><a href="'.$r->urlFor('inscription').'">Inscription</a></li>
+                                <li><a href="'.$r->urlFor('connexion').'">Connexion</a></li>';
+                            }
                             ?>
                         </ul>
                     </nav>
