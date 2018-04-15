@@ -56,4 +56,14 @@ class Produits
         }
         return $res;
     }
+
+    static function getProduit($id) {
+        $spdo = SPDO::getInstance();
+        $req = $spdo->query('select * from produits where id_produit = :id');
+        $req->execute(array("id" => $id));
+        if ($donne = $req->fetch())
+            return Produits::fetchToProd($donne); //pour récupéré le premier
+        else
+            return null;
+    }
 }

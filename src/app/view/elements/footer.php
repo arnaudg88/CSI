@@ -1,11 +1,11 @@
 <?php
-
+$r = \Slim\Slim::getInstance();
 ?>
 <footer id="footer">
   <div class="container_12">
     <div class="grid_12">
       <h1 class="logo">
-        <a href="index.php">
+        <?php echo '<a href="'.$r->urlFor('home').'">'; ?>
           ENCHERES FUN
         </a>
       </h1>

@@ -4,6 +4,7 @@ require_once "vendor/autoload.php";
 use app\controller\Controller;
 use app\controller\ControllerEnchere;
 use app\controller\ControllerConnexion;
+use app\controller\ControllerProduit;
 
 session_start();
 
@@ -22,6 +23,11 @@ $app->get('/encheres', function () {
     $c = new ControllerEnchere();
     $c->afficheListeEnchere();
 })->setName('encheres');
+
+$app->get('/produit/:id', function ($id) {
+    $c = new ControllerProduit();
+    $c->afficheProduit($id);
+})->setName('produit');
 
 $app->get('/inscription', function () {
     $c = new ControllerConnexion();

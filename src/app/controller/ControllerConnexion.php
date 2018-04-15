@@ -37,12 +37,19 @@ class ControllerConnexion
 
     function connexion() {
         $u = Utilisateur::getUtilisateur($_POST['pseudo']);
-        if(password_verify($_POST['mdp'], $u->mdp)) {
-            $_SESSION['util'] = $u;
-            return true;
+        $s = \Slim\Slim::getInstance();
+        if(isset($u)) {
+            if (password_verify($_POST['mdp'], $u->mdp)) {
+                $_SESSION['util'] = $u;
+                return true;
+            } else {
+                echo '<h1>Mauvais mot de passe</h1>
+                <a href="'.$s->urlFor('connexion').'">Retour</a>';
+                return false;
+            }
         }else {
-            var_dump($u);
-            return false;
+            echo '<h1>Nom de compte existe pas</h1>
+                <a href="'.$s->urlFor('connexion').'">Retour</a>';
         }
     }
 

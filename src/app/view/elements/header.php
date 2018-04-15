@@ -1,4 +1,9 @@
 <?php
+$r = \Slim\Slim::getInstance();
+$dir = dirname($_SERVER['SCRIPT_NAME']);
+$dirJs = $dir.'/js/';
+$dirCss = $dir.'/css/';
+$dirImg = $dir.'/images/';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -7,25 +12,28 @@
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">>
     <meta charset="utf-8">
     <meta name = "format-detection" content = "telephone=no" />
-    <link rel="icon" href="images/favicon.ico">
-    <link rel="shortcut icon" href="images/favicon.ico" />
-    <link rel="stylesheet" href="css/owl.carousel.css">
-    <link rel="stylesheet" href="css/contact-form.css">
-    <link rel="stylesheet" href="css/camera.css">
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/jquery.js"></script>
-    <script src="js/jquery-migrate-1.1.1.js"></script>
-    <script src="js/jquery.easing.1.3.js"></script>
-    <script src="js/script.js"></script>
-    <script src="js/superfish.js"></script>
-    <script src="js/jquery.equalheights.js"></script>
-    <script src="js/jquery.mobilemenu.js"></script>
-    <script src="js/tmStickUp.js"></script>
-    <script src="js/jquery.ui.totop.js"></script>
-    <script src="js/camera.js"></script>
-    <script src="js/owl.carousel.js"></script>
+    <?php
+    echo '
+    <link rel="icon" href="'.$dirImg.'favicon.ico">
+    <link rel="shortcut icon" href="'.$dirImg.'favicon.ico" />
+    <link rel="stylesheet" href="'.$dirCss.'owl.carousel.css">
+    <link rel="stylesheet" href="'.$dirCss.'contact-form.css">
+    <link rel="stylesheet" href="'.$dirCss.'camera.css">
+    <link rel="stylesheet" href="'.$dirCss.'style.css">
+    <script src="'.$dirJs.'jquery.js"></script>
+    <script src="'.$dirJs.'jquery-migrate-1.1.1.js"></script>
+    <script src="'.$dirJs.'jquery.easing.1.3.js"></script>
+    <script src="'.$dirJs.'script.js"></script>
+    <script src="'.$dirJs.'superfish.js"></script>
+    <script src="'.$dirJs.'jquery.equalheights.js"></script>
+    <script src="'.$dirJs.'jquery.mobilemenu.js"></script>
+    <script src="'.$dirJs.'tmStickUp.js"></script>
+    <script src="'.$dirJs.'jquery.ui.totop.js"></script>
+    <script src="'.$dirJs.'camera.js"></script>
+    <script src="'.$dirJs.'owl.carousel.js"></script>
     <!--[if (gt IE 9)|!(IE)]><!-->
-    <script src="js/jquery.mobile.customized.min.js"></script>
+    <script src="'.$dirJs.'jquery.mobile.customized.min.js"></script>';
+?>
     <!--<![endif]-->
     <script>
         $(window).load(function() {
@@ -62,7 +70,7 @@
     </div>
     <![endif]-->
     <!--[if lt IE 9]>
-    <script src="js/html5shiv.js"></script>
+    <?php echo '<script src="'.$dirJs.'html5shiv.js"></script>'; ?>
     <link rel="stylesheet" media="screen" href="css/ie.css">
     <![endif]-->
 </head>
@@ -74,7 +82,9 @@ header
     <div class="container_12">
         <div class="grid_12">
             <h1 class="logo">
-                <a href="index.html">
+                <?php
+                echo '<a href="'.$r->urlFor('home').'">';
+                ?>
                     ENCHERES FUN
                     <span>Le site d'enchères qui répertorie les meilleures offres !</span>
                 </a>
@@ -92,7 +102,7 @@ header
                     <nav>
                         <ul class="sf-menu">
                             <?php
-                            $r = \Slim\Slim::getInstance();
+
 
                             echo '<li class="'.$r->urlFor('home').'"><a href="">Accueil</a></li>
                             <li><a href="'.$r->urlFor('encheres').'">Les enchères</a></li>
