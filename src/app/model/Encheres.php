@@ -2,7 +2,7 @@
 
 namespace app\model;
 
-require 'SPDO.php';
+require_once 'SPDO.php';
 
 class Encheres
 {

@@ -2,7 +2,7 @@
 
 namespace app\model;
 
-use app\model\SPDO;
+require_once 'SPDO.php';
 
 
 class Utilisateur
