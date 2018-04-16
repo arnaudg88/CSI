@@ -87,6 +87,10 @@ class SPDO
         return self::$instance;
     }
 
+    public function getPDOInstance() {
+        return $this->PDOInstance;
+    }
+
     /**
      * Exécute une requête SQL avec PDO
      *

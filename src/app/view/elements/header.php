@@ -106,7 +106,7 @@ header
 
                             echo '<li><a href="'.$r->urlFor('home').'">Accueil</a></li>
                             <li><a href="'.$r->urlFor('encheres').'">Les enchères</a></li>
-                            <li><a href="'.$r->urlFor('home').'">A propos</a></li>';
+                            <li><a href="'.$r->urlFor('mesProduits').'">Mes produits</a></li>';
 
                             if(isset($_SESSION['util'])) {
                                 echo '<li><a href="'.$r->urlFor('addProduit').'">Ajouter produit</a></li>

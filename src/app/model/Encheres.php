@@ -31,4 +31,22 @@ class Encheres
             return false;
         }
     }
+
+    static function finEnchere($id) {
+        $spdo = SPDO::getInstance();
+        $req = $spdo->query('UPDATE public.produits
+	SET etat_produit=:etat, datefinenchere_produit=current_date
+	WHERE id_produit = :id;');
+        if($req->execute(array(
+            'etat' => 'vendu',
+            'id' => $id
+        ))) {
+            return true;
+        }else {
+            echo $req->errorInfo()[2];
+            $s = Slim::getInstance();
+            echo '<a href="'.$s->urlFor('produit', array('id' => $id)).'">Retour</a>';
+            return false;
+        }
+    }
 }

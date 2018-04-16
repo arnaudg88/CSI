@@ -24,6 +24,11 @@ $app->get('/encheres', function () {
     $c->afficheListeEnchere();
 })->setName('encheres');
 
+$app->post('/encheres', function () {
+    $c = new ControllerEnchere();
+    $c->afficheJusteEnchere();
+})->setName('encheresPOST');
+
 $app->get('/produit/:id', function ($id) {
     $c = new ControllerProduit();
     $c->afficheProduit($id);
@@ -46,23 +51,48 @@ $app->get('/addProduit', function () {
 
 $app->post('/addProduit', function () use ($app) {
     $c = new ControllerProduit();
-    if($c->ajoutProduit())
-        $app->redirect($app->urlFor('home'));
+    /*if(*/$c->ajoutProduit();//)
+        //$app->redirect($app->urlFor('home'));
 })->setName('addProduitPOST');
 
 
+$app->get('/mesProduits', function () {
+    $c = new ControllerProduit();
+    $c->afficheMesProduits();
+})->setName('mesProduits');
+
+$app->post('/mesProduits', function () {
+    $c = new ControllerProduit();
+    $c->getMesProduits();
+})->setName('mesProduitsPOST');
+
+$app->post('/finEnchere', function () use ($app) {
+    $c = new ControllerEnchere();
+    $id = $_POST['idProd'];
+    $c->finEnchere($id);
+    $app->redirect($app->urlFor('produit', array('id' => $id)));
+})->setName('finEncherePOST');
+
+
+
 if(isset($_SESSION['util'])) {
-    $app->get('/profil/' . $_SESSION['util']->id, function () {
+    $app->get('/profil', function () {
         $c = new ControllerConnexion();
         $c->afficheProfil();
     })->setName('profil');
 
-    $app->post('/profil/' . $_SESSION['util']->id, function () use ($app) {
+    $app->post('/profil', function () use ($app) {
         $c = new ControllerConnexion();
         $c->ajouterSoldeDispo($_POST['montant']);
         $app->redirect($app->urlFor('home'));
     })->setName('profilPOST');
 }
+
+
+
+
+
+//compte
 
 $app->get('/inscription', function () {
     $c = new ControllerConnexion();
@@ -73,7 +103,6 @@ $app->post('/inscription', function () use ($app) {
     $c = new ControllerConnexion();
     if($c->inscription())
         $app->redirect($app->urlFor('connexion'));
-
 })->setName('inscriptionPOST');
 
 $app->get('/connexion', function () {

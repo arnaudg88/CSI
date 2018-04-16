@@ -30,4 +30,30 @@ class MotsCles
         }
         return $res;
     }
+
+    static function addMotsCle($id, $mot)
+    {
+        $spdo = SPDO::getInstance();
+        $req = $spdo->query('INSERT INTO motsclés(
+	id_mot, libellé_mot)
+	VALUES (DEFAULT, :mot);');
+        if ($req->execute(array(
+            'mot' => $mot
+        ))) {
+
+            $req = $spdo->query('select * from motsclés where libellé_mot = :mot');
+            $req->execute(array('mot' => $mot));
+            $idMot = $req->fetch()['id_mot'];
+
+            $req = $spdo->query('INSERT INTO decrit(
+	id_mot, id_produit)
+	VALUES (:mot, :prod);');
+            $req->execute(array(
+                'mot' => $idMot,
+                'prod' => $id
+            ));
+        } else {
+            echo $req->errorInfo()[2];
+        }
+    }
 }
