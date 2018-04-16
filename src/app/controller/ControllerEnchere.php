@@ -16,4 +16,8 @@ class ControllerEnchere
         $v = new VueListeEnchere();
         $v->render(0, $prod);
     }
+
+    function faireEnchere($id) {
+
+    }
 }

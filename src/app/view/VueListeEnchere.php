@@ -4,6 +4,7 @@ namespace app\view;
 
 
 use app\model\Produits;
+use Slim\Slim;
 
 class VueListeEnchere
 {
@@ -38,13 +39,13 @@ class VueListeEnchere
      * @param Produits $produit
      */
     function divProduit($produit) {
+        $s = Slim::getInstance();
         return '<div class="grid_12">
             <div class="extra_wrapper">
-                <img src="images/'.$produit->lienImg.'" alt="" class="img_inner fleft"/>
-                <div class="text1 tx__2"><a href="#">'.$produit->libelle.'</a></div>
+                <img src="'.dirname($_SERVER['SCRIPT_NAME']).'/images/'.$produit->lienImg.'" alt="" class="img_inner fleft"/>
+                <div class="text1 tx__2"><a href="'.$s->urlFor('produit', array('id' => $produit->id)).'">'.$produit->libelle.'</a></div>
                     <p> '.$produit->description.' </p><br>
-                    <a href="#" class="link-1">Enchérir</a>
-                    <a href="#" class="link-1">Annuler enchère</a>
+                    <a href="'.$s->urlFor('produit', array('id' => $produit->id)).'" class="link-1">Enchérir</a>
             </div>
         </div>';
     }

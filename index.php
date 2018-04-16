@@ -29,6 +29,29 @@ $app->get('/produit/:id', function ($id) {
     $c->afficheProduit($id);
 })->setName('produit');
 
+$app->post('/produit/:id', function ($id) use ($app) {
+    if(isset($_SESSION['util'])) {
+        $c = new ControllerEnchere();
+        $c->faireEnchere($id);
+    } else {
+        $app->redirect($app->urlFor('connexion'));
+    }
+
+})->setName('produitPOST');
+
+$app->get('/addProduit', function () {
+    $c = new ControllerProduit();
+    $c->afficheAddProduit();
+})->setName('addProduit');
+
+$app->post('/addProduit', function () use ($app) {
+    $c = new ControllerProduit();
+    if($c->ajoutProduit())
+        $app->redirect($app->urlFor('home'));
+})->setName('addProduitPOST');
+
+
+
 $app->get('/inscription', function () {
     $c = new ControllerConnexion();
     $c->afficheInscription();

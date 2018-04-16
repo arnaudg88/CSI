@@ -104,12 +104,13 @@ header
                             <?php
 
 
-                            echo '<li class="'.$r->urlFor('home').'"><a href="">Accueil</a></li>
+                            echo '<li><a href="'.$r->urlFor('home').'">Accueil</a></li>
                             <li><a href="'.$r->urlFor('encheres').'">Les enchères</a></li>
                             <li><a href="'.$r->urlFor('home').'">A propos</a></li>';
 
                             if(isset($_SESSION['util'])) {
-                                echo '<li>Bonjour '.$_SESSION['util']->pseudo.'</li>
+                                echo '<li><a href="'.$r->urlFor('addProduit').'">Ajouter produit</a></li>
+                                <li>Bonjour '.$_SESSION['util']->pseudo.'</li>
                                 <li><a href="'.$r->urlFor('deconnexion').'">Déconnexion</a></li>';
                             } else {
                                 echo '<li><a href="'.$r->urlFor('inscription').'">Inscription</a></li>

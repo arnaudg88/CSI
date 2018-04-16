@@ -3,6 +3,7 @@
 namespace app\model;
 
 require_once 'SPDO.php';
+use Slim\Slim;
 
 class Produits
 {
@@ -65,5 +66,28 @@ class Produits
             return Produits::fetchToProd($donne); //pour récupéré le premier
         else
             return null;
+    }
+
+    function ajout() {
+        $spdo = SPDO::getInstance();
+        $req = $spdo->query('INSERT INTO produits(
+	id_produit, idutilisateur_produit, description_produit, libelle_produit, etat_produit, datemisevente_produit, prixdepartenchere_produit, prixfinenchere_produit, encheremax_produit, datefinenchere_produit)
+	VALUES (DEFAULT, :idUtil, :desc, :lib, :etat, CURRENT_DATE, :prixD, :prixF, :prixD, :dateF);');
+        if($req->execute(array(
+            'idUtil' => $_SESSION['util']->id,
+            'desc' => $this->description,
+            'lib' => $this->libelle,
+            'etat' => 'en cours',
+            'prixD' => $this->prixDep,
+            'prixF' => $this->prixFin,
+            'dateF' => $this->dateFE
+        ))) {
+            return true;
+        }else {
+            echo $req->errorInfo()[2];
+            $s = Slim::getInstance();
+            echo '<a href="'.$s->urlFor('addProduit').'">Retour</a>';
+            return false;
+        }
     }
 }
