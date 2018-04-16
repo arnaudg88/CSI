@@ -23,26 +23,25 @@ class View
                 Content
                 ======================-->
                 <section id="content">
-                    <div class="ic">More Website Templates @ TemplateMonster.com - September22, 2014!</div>
                     <div class="container_12">
                         <div class="grid_4">
                             <div class="banner">
-                                <a href="#" class="banner_title">Live <br>
-                                    Events</a>
+                                <a href="#" class="banner_title">Des valeurs <br>
+                                    mises en avant</a>
                                 <div class="maxheight"><img src="images/icon1.png" alt=""></div>
                             </div>
                         </div>
                         <div class="grid_4">
                             <div class="banner">
-                                <a href="#" class="banner_title">Biblical <br>
-                                    Counseling</a>
+                                <a href="#" class="banner_title">Des milliers <br>
+                                    de produits</a>
                                 <div class="maxheight"><img src="images/icon2.png" alt=""></div>
                             </div>
                         </div>
                         <div class="grid_4">
                             <div class="banner">
-                                <a href="#" class="banner_title">Helping <br>
-                                    Children</a>
+                                <a href="#" class="banner_title">Une multitude <br>
+                                    d'utilisateurs</a>
                                 <div class="maxheight"><img src="images/icon3.png" alt=""></div>
                             </div>
                         </div>
