@@ -13,15 +13,19 @@ class VueProduit
                 <section id="content">
                 <div class="container_12">
                     <div class="grid_12">
-                        <h2>liste des enchères</h2>
                         <img src="images/slide1.jpg" alt="" class="img_inner fleft">
                         <div class="extra_wrapper">
-                            <div class="text1 tx__2"><a href="#">Nom produit</a></div>
-                            <p>Lorem ipsum dolor sit tetur dipiscing elit. In mollis erat mattis neque facilisisultries
-                                wertolio dasererat rutrum. </p>
-                            Horem ipsum dolor sit tetur dipiscing elit.Vivamus at magna non nunc thyrhoncus. Aliquam
-                            nibh ante, egestas id dictum a, commodo luctus libero. Praesent faucibus malesuada faucibus.
-                            Donec laoreet metus id laoreet malesuada. Lorem ipsum <br>
+                            <div class="text1 tx__2"><a href="#"><?php $produit->$libelle ?></a></div>
+                            <?php echo '<ul>
+                              <li>Date de début d\'enchères ' . $produit->dateMV . '</li>
+                               <li>Date de fin d\'enchères ' . $produit->dateFE . '</li>
+                               <li>Prix de début d\'enchères ' . $produit->prixDep . '</li>
+                               <li>Prix de fin d\'enchères ' . $produit->prixFin . '</li>
+                               <li>Enchere maximale : ' . $produit->enchereMax . '</li>
+                               <li>Etat de la vente : ' . $produit->etat . '</li>
+                             </ul>'
+                             ?>
+                            <?php $produit->description ?> <br>
                             <a href="#" class="link-1">Enchérir</a>
                             <a href="#" class="link-1">Annuler enchère</a>
                         </div>
