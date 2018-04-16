@@ -119,6 +119,37 @@ class VueConnexion
                 <?php
                 include('elements/footer.php');
                 break;
+
+
+            case 2:
+                include('elements/header.php');
+                ?>
+                <section class="block-1">
+                    <div class="container_12">
+                        <div class="grid_12">
+                            <h3 class="white ta__center">Mon profil</h3>
+                        </div>
+                        <div class="clear"></div>
+                        <form id="contact-form" method="post">
+                            <div class="contact-form-loader"></div>
+                            <div class="grid_12">
+                                <label class="pseudo">
+                                    <input type="text" name="montant" placeholder="Ajouter solde dispo:" value="" data-constraints="@Required" />
+                                    <span class="empty-message">*This field is required.</span>
+                                    <span class="error-message">*This is not a valid pseudo.</span>
+                                </label>
+                            </div>
+                        </form>
+                        <div class="ta__right">
+                            <button href="#" class="link-1 white" type="submit" form="contact-form" data-type="submit">Send</button>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </section>
+                <div class="clear"></div>
+                <?php
+                include('elements/footer.php');
+                break;
         }
     }
 }

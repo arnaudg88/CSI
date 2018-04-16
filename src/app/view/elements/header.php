@@ -110,7 +110,7 @@ header
 
                             if(isset($_SESSION['util'])) {
                                 echo '<li><a href="'.$r->urlFor('addProduit').'">Ajouter produit</a></li>
-                                <li>Bonjour '.$_SESSION['util']->pseudo.'</li>
+                                <li><a href="'.$r->urlFor('profil').'">Bonjour '.$_SESSION['util']->pseudo.' ('.$_SESSION['util']->soldeDisp.'€)</a></li>
                                 <li><a href="'.$r->urlFor('deconnexion').'">Déconnexion</a></li>';
                             } else {
                                 echo '<li><a href="'.$r->urlFor('inscription').'">Inscription</a></li>

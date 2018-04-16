@@ -17,7 +17,7 @@ class ControllerEnchere
         $v->render(0, $prod);
     }
 
-    function faireEnchere($id) {
-
+    function faireEnchere($id, $montant) {
+        Encheres::faireEnchere($id, $montant);
     }
 }

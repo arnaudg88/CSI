@@ -26,6 +26,18 @@ class ControllerConnexion
         $v->render(1);
     }
 
+    function afficheProfil() {
+        $v = new VueConnexion();
+        $v->render(2);
+    }
+
+    function ajouterSoldeDispo($montant) {
+        $pseudo = $_SESSION['util']->pseudo;
+        $u = Utilisateur::getUtilisateur($pseudo);
+        $u->ajouterSolde($montant);
+        $_SESSION['util'] = Utilisateur::getUtilisateur($pseudo);
+    }
+
     function inscription() {
         if($_POST['mdp'] == $_POST['mdpconfirm']) {
             $u = new Utilisateur(null, $_POST['nom'], $_POST['prenom'], $_POST['dateN'], $_POST['tel'], $_POST['adresse'], $_POST['ville'], $_POST['pays'], $_POST['pseudo'], $_POST['mdp'], 0.00, 0.00);

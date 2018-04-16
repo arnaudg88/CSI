@@ -15,7 +15,7 @@ class VueProduit
                     <div class="grid_12">
                         <img src="images/slide1.jpg" alt="" class="img_inner fleft">
                         <div class="extra_wrapper">
-                            <div class="text1 tx__2"><a href="#"><?php $produit->$libelle ?></a></div>
+                            <div class="text1 tx__2"><a href="#"><?php echo $produit->libelle ?></a></div>
                             <?php echo '<ul>
                               <li>Date de début d\'enchères ' . $produit->dateMV . '</li>
                                <li>Date de fin d\'enchères ' . $produit->dateFE . '</li>
@@ -25,13 +25,25 @@ class VueProduit
                                <li>Etat de la vente : ' . $produit->etat . '</li>
                              </ul>'
                              ?>
-                            <?php $produit->description ?> <br>
-                            <a href="#" class="link-1">Enchérir</a>
-                            <a href="#" class="link-1">Annuler enchère</a>
+                            <?php echo $produit->description ?> <br>
+
+                            <div class="grid_6">
+                                <form id="contact-form" method="post">
+                                <div class="contact-form-loader"></div>
+                                <div class="grid_12">
+                                <?php $i = $produit->enchereMax+1;
+                                    echo '<input type="number" id="prixEnch" name="montant" placeholder="00.00€" min="'.$i.'"data-constraints="@JustNumbers">';
+                                ?></div>
+                                </form>
+                                <div class="ta__right">
+                                    <button href="#" class="link-1 white" type="submit" form="contact-form" data-type="submit">Enchérir</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="clear"></div>
                 </div>
+                </section>
                 <?php include('elements/footer.php');
                 break;
 

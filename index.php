@@ -32,12 +32,12 @@ $app->get('/produit/:id', function ($id) {
 $app->post('/produit/:id', function ($id) use ($app) {
     if(isset($_SESSION['util'])) {
         $c = new ControllerEnchere();
-        $c->faireEnchere($id);
+        $c->faireEnchere($id, $_POST['montant']);
     } else {
         $app->redirect($app->urlFor('connexion'));
     }
 
-})->setName('produitPOST');
+})->setName('encherir');
 
 $app->get('/addProduit', function () {
     $c = new ControllerProduit();
@@ -51,6 +51,18 @@ $app->post('/addProduit', function () use ($app) {
 })->setName('addProduitPOST');
 
 
+if(isset($_SESSION['util'])) {
+    $app->get('/profil/' . $_SESSION['util']->id, function () {
+        $c = new ControllerConnexion();
+        $c->afficheProfil();
+    })->setName('profil');
+
+    $app->post('/profil/' . $_SESSION['util']->id, function () use ($app) {
+        $c = new ControllerConnexion();
+        $c->ajouterSoldeDispo($_POST['montant']);
+        $app->redirect($app->urlFor('home'));
+    })->setName('profilPOST');
+}
 
 $app->get('/inscription', function () {
     $c = new ControllerConnexion();

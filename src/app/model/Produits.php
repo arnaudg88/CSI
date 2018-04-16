@@ -72,7 +72,7 @@ class Produits
         $spdo = SPDO::getInstance();
         $req = $spdo->query('INSERT INTO produits(
 	id_produit, idutilisateur_produit, description_produit, libelle_produit, etat_produit, datemisevente_produit, prixdepartenchere_produit, prixfinenchere_produit, encheremax_produit, datefinenchere_produit)
-	VALUES (DEFAULT, :idUtil, :desc, :lib, :etat, CURRENT_DATE, :prixD, :prixF, :prixD, :dateF);');
+	VALUES (DEFAULT, :idUtil, :desc, :lib, :etat, CURRENT_DATE, :prixD, :prixF, 0, :dateF);');
         if($req->execute(array(
             'idUtil' => $_SESSION['util']->id,
             'desc' => $this->description,

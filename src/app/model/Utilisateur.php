@@ -50,6 +50,12 @@ class Utilisateur
 
     }
 
+    function ajouterSolde($montant) {
+        $spdo = SPDO::getInstance();
+        $req = $spdo->query('UPDATE utilisateurs SET solde_disponible_utilisateur = solde_disponible_utilisateur + :montant, solde_compte_utilisateur = solde_compte_utilisateur + :montant where id_utilisateur = :id');
+        $req->execute(array("id" => $this->id, 'montant' => $montant));
+    }
+
     function inscription() {
         $hash = password_hash($this->mdp, PASSWORD_DEFAULT);
         $this->mdp = $hash;
